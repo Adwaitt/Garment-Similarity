@@ -1,0 +1,13 @@
+The dataset includes 4-d images. To fit the targeted imagenet, the images were resized to (224, 224)
+and were normalized such that the intensity ranged between 0 to 1. After that, the images were
+converted to the proper datatype.
+	The solution incorporates a pre-trained resnet50 that generates a feature map. The input layer
+of the model was adapted to accomodate a 4-channel input instead of the default 3-channel input.
+The feature map was generated for all the images within the dataset. After feature map generation
+the annoy package was used index the feature map and compute the cosine similarity between them.
+	Finally, the "solution" class was created to take the image as an input. It automatically
+applies all the aforementioned transformations, generates the feature map, adds the image to the
+index, computes the distance and outputs 10 similar garments.
+	To use the "solution" class, it is required to input a URI of the image that is to be used as 
+the input. That image can then be sent to create an object of the solution class and with that, the
+"plot_sim" function can be used to get the output.
